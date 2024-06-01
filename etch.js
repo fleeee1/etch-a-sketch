@@ -13,11 +13,21 @@ function makeGrid(rows, cols) {
             row.appendChild(cell);
 
             cell.addEventListener('mouseover', function() {
-                cell.style.backgroundColor = 'rgb(187 207 240)'
+                if (!cell.classList.contains('clicked')) {
+                    cell.style.backgroundColor = 'rgb(187 207 240)'
+                }
             });
 
             cell.addEventListener('mouseout', function() {
-                cell.style.backgroundColor = '';
+                if (!cell.classList.contains('clicked')) {
+                    cell.style.backgroundColor = '';   
+                }
+                
+            });
+            
+            cell.addEventListener('click', function() {
+                cell.style.backgroundColor = 'black';
+                cell.classList.add('clicked');
             });
         }
 
