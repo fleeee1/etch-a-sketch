@@ -1,3 +1,14 @@
-* {
-    color: red;
-}
+#container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+  }
+
+  .cell {
+    flex: 0 0 50px); /* Each cell takes up 25% of the container width with some spacing */
+    background-color: #eee; /* background color */
+    border: 1px solid rgb(137, 132, 132); /* border */
+    box-sizing: border-box; /* Include border and padding in the width */
+    padding: 10px; /* padding */
+    text-align: center; /* Center content horizontally */
+    line-height: 50px; /* Center content vertically */
+  }
