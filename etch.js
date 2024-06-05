@@ -1,8 +1,33 @@
-// create Div and refer to container //
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('cellSizeSlider');
+    const gridSizeDisplay = document.getElementById('grid-size');
+
+    function updateGridSizeDisplay() {
+        gridSizeDisplay.textContent = `${slider.value}x${slider.value}`;
+    }
+
+    slider.addEventListener('input', () => {
+        updateGridSizeDisplay();
+        updateGridSize(slider.value);
+    });
+
+    // Initialize the grid with the default slider value
+    updateGridSizeDisplay();
+    makeGrid(16, 16, slider.value);
+});
+
 const container = document.getElementById('container');
 let isMouseDown = false;
 
-function makeGrid(rows, cols) {
+
+
+
+
+
+
+
+
+function makeGrid(rows, cols, cellSize) {
     for (let i = 0; i < rows; i++){
         const row = document.createElement('div');
         row.classList.add('row'); 
@@ -11,6 +36,8 @@ function makeGrid(rows, cols) {
         for (let j = 0; j < cols; j++){
             const cell = document.createElement('div');
             cell.classList.add('cell');
+            cell.style.width = cellSize + 'px'; // Set width
+            cell.style.height = cellSize + 'px'; // Set height
             row.appendChild(cell);
 
             cell.addEventListener('mouseover', function() {
@@ -43,5 +70,3 @@ document.addEventListener('mousedown', function() {
 document.addEventListener('mouseup', function() {
     isMouseDown = false;
 });
-
-makeGrid(16, 16);
