@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridSizeDisplay = document.getElementById('grid-size');
 
     function updateGridSizeDisplay() {
-        gridSizeDisplay.textContent = `${slider.value}x${slider.value}`;
+        const gridSize = Math.floor(800 / slider.value); //calculates grid size
+        gridSizeDisplay.textContent = `${gridSize}x${gridSize}`;
     }
 
     function updateGridSize(cellSize) {
-        container.innerHTML = '';
-        makeGrid(cellSize, cellSize, cellSize);
+        container.innerHTML = ''; //clear existing grid
+        const gridSize = Math.floor(800 / cellSize)
+        makeGrid(gridSize, gridSize, cellSize);
     }
 
     slider.addEventListener('input', () => {
@@ -18,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the grid with the default slider value
     updateGridSizeDisplay();
-    makeGrid(slider.value, slider.value, slider.value);
+    updateGridSize(slider.value);
 });
-;
+
 const container = document.getElementById('container');
 let isMouseDown = false;
 
@@ -32,6 +34,8 @@ let isMouseDown = false;
 
 
 function makeGrid(rows, cols, cellSize) {
+    container.innerHTML = '';
+
     for (let i = 0; i < rows; i++){
         const row = document.createElement('div');
         row.classList.add('row'); 
