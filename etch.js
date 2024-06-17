@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gridSizeDisplay.textContent = `${slider.value}x${slider.value}`;
     }
 
+    function updateGridSize(cellSize) {
+        container.innerHTML = '';
+        makeGrid(cellSize, cellSize, cellSize);
+    }
+
     slider.addEventListener('input', () => {
         updateGridSizeDisplay();
         updateGridSize(slider.value);
@@ -13,12 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the grid with the default slider value
     updateGridSizeDisplay();
-    makeGrid(16, 16, slider.value);
+    makeGrid(slider.value, slider.value, slider.value);
 });
-
+;
 const container = document.getElementById('container');
 let isMouseDown = false;
-
 
 
 
